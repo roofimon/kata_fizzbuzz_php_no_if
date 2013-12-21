@@ -3,22 +3,19 @@ class Fizzbuzz {
   function __construct($initial) {
     $this->number = $initial;
   }
+
   function toString() {
-    $str = "";
+    $arr = [];
     for ($i = 1; $i <= $this->number; $i++) {
-      $str .= $this->getElement($i);
-      $str .=", ";
+      $arr[] = $this->getElement($i);
     }
-    $str = substr($str, 0, -2);
-    return $str;
+    return implode(', ', $arr);
   }
+
   function getElement($i) {
-    return $this->fizzBuzz($i);
-  }
-  function fizzBuzz($i) {
     $fizz = new Fizz($i);
     $buzz = new Buzz($fizz);
-    return $fizz->getValue($i).$buzz->getValue();
+    return $fizz->getValue().$buzz->getValue();
   }
 }
 
@@ -29,9 +26,9 @@ class Fizz {
       $this->i = $i;
     }
 
-    function getValue($i) {
+    function getValue() {
       $fizz = ["Fizz", "", ""];
-      return $fizz[$i%3];
+      return $fizz[$this->i%3];
     }
 
     function remaining() {
