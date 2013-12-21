@@ -13,22 +13,47 @@ class Fizzbuzz {
     return $str;
   }
   function getElement($i) {
-    if ($this->noFizzNoBuzz($i))
-      return $i;
     return $this->fizzBuzz($i);
   }
-  function noFizzNoBuzz($i) {
-    return $i % 3 != 0 && $i % 5 !=0;
-  }
   function fizzBuzz($i) {
-    $fizz = ["Fizz", "", ""];
-    $buzz = ["Buzz", "", "", "", ""];
-
-    $result = "";
-    $result .= $fizz[$i%3];
-    $result .= $buzz[$i%5];
-    return $result;
+    $fizz = new Fizz($i);
+    $buzz = new Buzz($fizz);
+    return $fizz->getValue($i).$buzz->getValue();
   }
+}
+
+class Fizz {
+    public $i;
+
+    function __construct($i) {
+      $this->i = $i;
+    }
+
+    function getValue($i) {
+      $fizz = ["Fizz", "", ""];
+      return $fizz[$i%3];
+    }
+
+    function remaining() {
+      $i = $this->i;
+      $remainings = ["", $i, $i];
+      return $remainings[$i%3];
+    }
+}
+
+class Buzz {
+    private $i;
+    public $buzz;
+
+    function __construct($fizz) {
+      $this->i = $fizz->i;
+      $remaining = $fizz->remaining();
+      $this->buzz = ["Buzz", $remaining, $remaining, $remaining, $remaining];
+    }
+
+    function getValue() {
+      return $this->buzz[$this->i%5];
+    }
 }
 
 class FizzBuzzTest extends PHPUnit_Framework_TestCase{
