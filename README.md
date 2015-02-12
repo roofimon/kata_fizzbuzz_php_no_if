@@ -13,5 +13,6 @@ simple:
 8.  8  = 1, 2, Fizz, 4, Buzz, Fizz, 7, 8
 9.  9  = 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz
 10. 10 = 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz
+11. 11 = 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11
 ...
 15. 15 = 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz
